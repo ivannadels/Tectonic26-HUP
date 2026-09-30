@@ -44,7 +44,7 @@ flowchart LR
 
 ## How to run
 
-Requirements: Python 3.11+, Node 18+.
+Requirements: Python 3.11+ (tested up to 3.14), Node 18+.
 
 ```bash
 cp .env.example .env          # set DEMO_PASSWORD (all demo users share it)

@@ -2,7 +2,7 @@
 import os
 import secrets
 
-from passlib.hash import bcrypt
+import bcrypt
 
 from .db import conn
 
@@ -19,7 +19,7 @@ def seed_users():
         password = secrets.token_urlsafe(12)
         print(f"\n[TrustTrail] DEMO_PASSWORD not set. Generated password for all demo users: {password}\n",
               flush=True)
-    hashed = bcrypt.hash(password)
+    hashed = bcrypt.hashpw(password.encode()[:72], bcrypt.gensalt()).decode()
     with conn() as c:
         for username, name, role in USERS:
             c.execute(

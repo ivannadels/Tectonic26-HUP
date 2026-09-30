@@ -12,7 +12,7 @@ import time
 from dataclasses import dataclass
 
 from fastapi import Depends, HTTPException, Request, Response
-from passlib.hash import bcrypt
+import bcrypt
 
 from .db import conn
 
@@ -20,7 +20,7 @@ COOKIE = "tt_session"
 SESSION_TTL = 8 * 3600
 MAX_FAILURES, WINDOW = 5, 300
 _SECRET = (os.getenv("SESSION_SECRET") or secrets.token_hex(32)).encode()
-_DUMMY_HASH = bcrypt.hash(secrets.token_urlsafe(16))  # equalises timing for unknown users
+_DUMMY_HASH = bcrypt.hashpw(secrets.token_bytes(16), bcrypt.gensalt()).decode()  # equalises timing for unknown users
 _failures: dict[str, list[float]] = {}
 _lock = threading.Lock()
 
@@ -60,7 +60,8 @@ def clear_failures(username: str):
 def verify_credentials(username: str, password: str) -> User | None:
     with conn() as c:
         row = c.execute("SELECT * FROM users WHERE username=?", (username,)).fetchone()
-    ok = bcrypt.verify(password, row["password_hash"] if row else _DUMMY_HASH)
+    stored = (row["password_hash"] if row else _DUMMY_HASH).encode()
+    ok = bcrypt.checkpw(password.encode()[:72], stored)
     if row and ok:
         return User(row["username"], row["display_name"], row["role"])
     return None
