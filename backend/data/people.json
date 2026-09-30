@@ -1,0 +1,6 @@
+[
+  { "id": "katrien",    "name": "Katrien De Smet", "role": "HR Business Partner, Brussels" },
+  { "id": "legal-team", "name": "Legal Knowledge Team", "role": "Maintains legal notes" },
+  { "id": "prevention", "name": "Marc Peeters", "role": "Prevention Advisor" },
+  { "id": "hr-nl",      "name": "HR Netherlands", "role": "NL HR team" }
+]

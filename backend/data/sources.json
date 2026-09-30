@@ -1,0 +1,99 @@
+[
+  {
+    "id": "src-01",
+    "title": "HR Onboarding channel (Teams)",
+    "type": "chat",
+    "date": "2026-07-28",
+    "owner": "katrien",
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school", "voluntary"] },
+    "lists_documents": ["A"],
+    "contains_personal_data": true,
+    "raw_text": "Katrien De Smet: @Jonas for Priya Nair's start on Monday, don't forget the IT & confidentiality acknowledgement. She'll be working in client payroll files. Last year an intern got system access before signing it and we had to report it. From now on every intern signs it before day one.\nJonas Wouters: Noted, I'll add it to my list.",
+    "redacted_summary": "HR practice since July 2026: every intern signs the IT & confidentiality acknowledgement before their first day, because interns may access client payroll data. Stated by HR in a Teams onboarding conversation."
+  },
+  {
+    "id": "src-02",
+    "title": "Email: 'Intern onboarding, what we need'",
+    "type": "hr_email",
+    "date": "2025-03-10",
+    "owner": "katrien",
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "lists_documents": ["B"],
+    "contains_personal_data": false,
+    "raw_text": "Hi all, for school interns please make sure we receive the signed tripartite internship agreement before the start date. That's all we need from them. Thanks! HR Shared Services",
+    "redacted_summary": "HR email (March 2025): for school interns, only the signed tripartite agreement is needed."
+  },
+  {
+    "id": "src-03",
+    "title": "Legal note: School internships",
+    "type": "law",
+    "date": "2019-09-01",
+    "owner": "legal-team",
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "lists_documents": ["B"],
+    "contains_personal_data": false,
+    "raw_text": "A school internship is governed by a written tripartite agreement between the student, the educational institution and the host organisation, signed before the internship starts.",
+    "redacted_summary": "School internships require a tripartite agreement (student, school, host) signed before the start."
+  },
+  {
+    "id": "src-04",
+    "title": "Circular 2026/03: Learning-objectives annex (FICTIONAL)",
+    "type": "law",
+    "date": "2025-11-12",
+    "effective_from": "2026-01-01",
+    "owner": "legal-team",
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "lists_documents": ["C"],
+    "contains_personal_data": false,
+    "raw_text": "[FICTIONAL, demo corpus] From 1 January 2026, host organisations must hold a learning-objectives annex, signed by the school supervisor, for every school internship before it starts.",
+    "redacted_summary": "[Fictional] Since 1 Jan 2026, a learning-objectives annex signed by the school supervisor is required for school internships."
+  },
+  {
+    "id": "src-05",
+    "title": "Prevention note: Interns performing manual tasks",
+    "type": "law",
+    "date": "2021-02-15",
+    "owner": "prevention",
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school", "voluntary"] },
+    "lists_documents": ["D"],
+    "contains_personal_data": false,
+    "raw_text": "If an intern will perform manual tasks, the host must carry out a workplace risk analysis and send it to the educational institution before the internship starts. Desk-based roles do not require it.",
+    "redacted_summary": "A workplace risk analysis is required, and must be sent to the school, only if the intern performs manual tasks."
+  },
+  {
+    "id": "src-06",
+    "title": "Stagiairs Nederland: onboarding",
+    "type": "policy",
+    "date": "2024-05-02",
+    "owner": "hr-nl",
+    "scope": { "country": "NL", "contract_type": "internship" },
+    "lists_documents": [],
+    "contains_personal_data": false,
+    "raw_text": "Voor stagiairs in Nederland: stageovereenkomst en een VOG (Verklaring Omtrent het Gedrag) vóór de startdatum.",
+    "redacted_summary": "Netherlands intern onboarding: internship agreement and a certificate of conduct (VOG)."
+  },
+  {
+    "id": "src-07",
+    "title": "Employee onboarding checklist",
+    "type": "policy",
+    "date": "2025-09-01",
+    "owner": "katrien",
+    "scope": { "country": "BE", "contract_type": "employee" },
+    "lists_documents": [],
+    "contains_personal_data": false,
+    "raw_text": "New employees: signed employment contract, bank account details for payroll, Dimona declaration before the first working hour.",
+    "redacted_summary": "Employee onboarding: employment contract, bank details, Dimona declaration."
+  },
+  {
+    "id": "src-08",
+    "title": "Onboarding checklist v3 (shared drive)",
+    "type": "policy",
+    "date": "2023-01-20",
+    "owner": null,
+    "scope": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "lists_documents": ["B"],
+    "contains_personal_data": false,
+    "raw_text": "Interns: tripartite agreement, bank details, copy of ID.",
+    "redacted_summary": "Undated-looking checklist on the shared drive: tripartite agreement, bank details, ID copy. No owner."
+  }
+]

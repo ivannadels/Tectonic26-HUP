@@ -1,0 +1,23 @@
+[
+  { "id": "c-A1", "document": "A", "source": "src-01", "authority": "chat",
+    "applies_if": { "country": "BE", "contract_type": "internship", "internship_type": ["school", "voluntary"] },
+    "condition": null,
+    "reason": "Interns may access client payroll data, so HR requires the acknowledgement before any system access." },
+
+  { "id": "c-B1", "document": "B", "source": "src-03", "authority": "law",
+    "applies_if": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "condition": null,
+    "reason": "School internships are governed by a tripartite agreement signed before the start." },
+
+  { "id": "c-C1", "document": "C", "source": "src-04", "authority": "law", "effective_from": "2026-01-01",
+    "applies_if": { "country": "BE", "contract_type": "internship", "internship_type": ["school"] },
+    "condition": null,
+    "reason": "[Fictional regulation] Required for school internships since 1 Jan 2026." },
+
+  { "id": "c-D1", "document": "D", "source": "src-05", "authority": "law",
+    "applies_if": { "country": "BE", "contract_type": "internship", "internship_type": ["school", "voluntary"] },
+    "condition": { "fact": "manual_tasks", "equals": true,
+                   "question": "Will the intern perform any manual tasks, or is the role desk-based?",
+                   "ask_person": "prevention" },
+    "reason": "A risk analysis is only required when the intern performs manual tasks." }
+]

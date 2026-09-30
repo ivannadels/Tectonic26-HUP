@@ -1,0 +1,6 @@
+[
+  { "id": "A", "name": "IT & confidentiality acknowledgement", "provided_by": "intern",  "deadline_rule": { "anchor": "start_date", "offset_days": -1, "label": "before day one" } },
+  { "id": "B", "name": "Tripartite internship agreement (school, intern, SD Worx)", "provided_by": "school", "deadline_rule": { "anchor": "start_date", "offset_days": -1, "label": "signed before the first day" } },
+  { "id": "C", "name": "Learning-objectives annex, signed by the school supervisor", "provided_by": "school", "deadline_rule": { "anchor": "start_date", "offset_days": -3, "label": "3 days before start" } },
+  { "id": "D", "name": "Workplace risk analysis, sent to the school", "provided_by": "manager", "deadline_rule": { "anchor": "start_date", "offset_days": -10, "label": "10 days before start (internal guideline)" } }
+]
