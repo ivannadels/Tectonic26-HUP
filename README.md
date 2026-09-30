@@ -77,6 +77,19 @@ gcloud auth application-default login     # no key files in the repo
 
 Then set `USE_LLM=true`, `GCP_PROJECT`, `GCP_LOCATION` and `GEMINI_MODEL` (copy the exact Gemini Flash model ID from Vertex AI Model Garden).
 
+## Deploy to Cloud Run (one URL, frontend + API)
+
+The `Dockerfile` builds the React app and has FastAPI serve it, so the UI and `/api` share one HTTPS origin.
+
+```bash
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com
+gcloud run deploy trusttrail --source . --region europe-west1 --allow-unauthenticated \
+  --min-instances 1 --max-instances 1 \
+  --set-env-vars "DEMO_PASSWORD=<choose>,SESSION_SECRET=$(openssl rand -hex 32),USE_LLM=false"
+```
+
+`--max-instances 1` keeps the SQLite demo database and sessions in one place (it resets on redeploy, which is fine for a demo). Secrets are passed at deploy time and never committed.
+
 ## Environment variables
 
 | Variable | Purpose | Default |

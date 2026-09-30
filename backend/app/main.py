@@ -43,3 +43,20 @@ async def no_stack_traces(request: Request, exc: Exception):
 
 for r in (auth.router, cases.router, sources.router, flags.router):
     app.include_router(r, prefix="/api")
+
+
+# Production: serve the built frontend from the same origin (Cloud Run).
+# Only files inside frontend/dist are reachable; unknown paths return index.html.
+_DIST = os.getenv("FRONTEND_DIST", os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+if os.path.isdir(_DIST):
+    from fastapi.responses import FileResponse  # noqa: E402
+    from fastapi.staticfiles import StaticFiles  # noqa: E402
+
+    _DIST = os.path.realpath(_DIST)
+    app.mount("/assets", StaticFiles(directory=os.path.join(_DIST, "assets")), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    def spa(path: str):
+        if path.startswith("api/"):
+            return JSONResponse({"detail": "Not found"}, status_code=404)
+        return FileResponse(os.path.join(_DIST, "index.html"))
