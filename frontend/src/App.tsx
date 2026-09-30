@@ -11,6 +11,9 @@ export default function App() {
   const [cases, setCases] = useState<CaseSummary[]>([]);
   const [caseId, setCaseId] = useState<string | null>(null);
   const [view, setView] = useState<"workspace" | "inbox">("workspace");
+  // Remount the workspace only on an explicit case switch, not when a new case gets its id.
+  const [wsKey, setWsKey] = useState(0);
+  const openCase = (id: string | null) => { setCaseId(id); setWsKey((k) => k + 1); setView("workspace"); };
 
   useEffect(() => { api<Me>("/auth/me").then(setMe).catch(() => setMe(null)); }, []);
 
@@ -37,13 +40,13 @@ export default function App() {
       <header className="topbar">
         <div className="brand"><ShieldCheck size={20} /> TrustTrail</div>
         <div className="topbar-mid">
-          <select value={caseId ?? ""} onChange={(e) => { setCaseId(e.target.value || null); setView("workspace"); }}>
+          <select value={caseId ?? ""} onChange={(e) => openCase(e.target.value || null)}>
             <option value="">New case…</option>
             {cases.map((c) => (
               <option key={c.id} value={c.id}>{c.title}{c.owner !== me.username ? ` (${c.owner})` : ""}</option>
             ))}
           </select>
-          <button className="btn ghost" onClick={() => { setCaseId(null); setView("workspace"); }}><Plus size={16} /> New</button>
+          <button className="btn ghost" onClick={() => openCase(null)}><Plus size={16} /> New</button>
           {me.role === "hr" && (
             <button className={`btn ghost ${view === "inbox" ? "active" : ""}`} onClick={() => setView(view === "inbox" ? "workspace" : "inbox")}>
               <Inbox size={16} /> Outdated-guidance inbox
@@ -59,7 +62,7 @@ export default function App() {
       <main className="main">
         {view === "inbox" && me.role === "hr"
           ? <HrInbox />
-          : <Workspace key={caseId ?? "new"} me={me} caseId={caseId}
+          : <Workspace key={wsKey} me={me} caseId={caseId}
               onCreated={(id) => { setCaseId(id); refreshCases(); }} />}
       </main>
       <footer className="footer">

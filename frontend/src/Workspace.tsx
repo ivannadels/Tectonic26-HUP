@@ -15,11 +15,12 @@ export default function Workspace({ me, caseId, onCreated }: Props) {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!caseId) return;
+    if (!caseId || kase?.id === caseId) return; // just created here: state is already current
     api<Case>(`/cases/${caseId}`).then((c) => {
       setKase(c);
       if (c.has_result) api<Result>(`/cases/${caseId}/result`).then(setResult);
     }).catch((e) => setError(e.message));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseId]);
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [kase?.messages.length]);
