@@ -41,15 +41,15 @@ export default function App() {
         <div className="brand"><ShieldCheck size={20} /> TrustTrail</div>
         <div className="topbar-mid">
           <select value={caseId ?? ""} onChange={(e) => openCase(e.target.value || null)}>
-            <option value="">New case…</option>
+            <option value="">Start a new request</option>
             {cases.map((c) => (
               <option key={c.id} value={c.id}>{c.title}{c.owner !== me.username ? ` (${c.owner})` : ""}</option>
             ))}
           </select>
-          <button className="btn ghost" onClick={() => openCase(null)}><Plus size={16} /> New</button>
+          <button className="btn ghost" onClick={() => openCase(null)}><Plus size={16} /> New request</button>
           {me.role === "hr" && (
             <button className={`btn ghost ${view === "inbox" ? "active" : ""}`} onClick={() => setView(view === "inbox" ? "workspace" : "inbox")}>
-              <Inbox size={16} /> Outdated-guidance inbox
+              <Inbox size={16} /> Flagged sources
             </button>
           )}
         </div>

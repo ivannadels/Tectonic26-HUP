@@ -66,8 +66,8 @@ export default function Workspace({ me, caseId, onCreated }: Props) {
         <div className="messages">
           {messages.length === 0 && (
             <div className="chat-empty">
-              <p><strong>Onboarding an intern?</strong></p>
-              <p className="muted">Ask what you need, for example: “HR is busy, what documents do I need from the intern and by when?”</p>
+              <h2>Onboarding an intern?</h2>
+              <p className="muted">Ask in your own words, for example “What documents do I need from my new intern, and by when?”</p>
             </div>
           )}
           {messages.map((m, i) => <Bubble key={i} m={m} />)}
@@ -80,7 +80,7 @@ export default function Workspace({ me, caseId, onCreated }: Props) {
         {isOwner ? (
           <form className="composer" onSubmit={submit}>
             <input value={text} maxLength={1000} onChange={(e) => setText(e.target.value)}
-              placeholder="Type your question…" disabled={busy} />
+              placeholder="Ask about your new intern…" disabled={busy} />
             <button className="btn primary icon" disabled={busy || !text.trim()} aria-label="Send"><Send size={16} /></button>
           </form>
         ) : <div className="readonly-note">Viewing {kase?.owner}'s case (read-only).</div>}

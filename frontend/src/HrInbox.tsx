@@ -12,8 +12,8 @@ export default function HrInbox() {
 
   return (
     <div className="inbox">
-      <h2>Outdated-guidance inbox</h2>
-      <p className="muted">Sources that colleagues flagged as outdated. Update or retire the source, then resolve the flag.</p>
+      <h2>Flagged sources</h2>
+      <p className="muted">Colleagues told us these sources look out of date. Update or retire the source, then mark it resolved.</p>
       {flags === null ? <p className="muted">Loading…</p> : flags.length === 0 ? (
         <div className="empty">No flags. Everything looks current.</div>
       ) : flags.map((f) => (
@@ -28,7 +28,7 @@ export default function HrInbox() {
             <span className="muted">Flagged by {f.flagged_by_name} · {new Date(f.created_at).toLocaleString("en-GB")}</span>
             {f.resolved
               ? <span className="resolved-tag"><CheckCircle2 size={14} /> Resolved</span>
-              : <button className="btn primary sm" onClick={() => resolve(f.id)}>Resolve</button>}
+              : <button className="btn primary sm" onClick={() => resolve(f.id)}>Mark resolved</button>}
           </div>
         </div>
       ))}
